@@ -1,0 +1,34 @@
+# Node / build (if you use npm / gulp / webpack)
+node_modules/
+dist/
+build/
+
+# WordPress core - don't track core files
+/wp-admin/
+/wp-includes/
+
+# Uploads (don't store media in repo)
+wp-content/uploads/
+wp-content/upgrade/
+
+# Composer / vendor
+vendor/
+
+# IDEs / OS files
+*.log
+*.sql
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Environment / config
+.env
+wp-config.php
+
+# Cache / temp
+.sass-cache/
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
