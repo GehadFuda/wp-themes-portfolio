@@ -15,6 +15,8 @@
       <?php
       if ( function_exists('the_custom_logo') && has_custom_logo() ) {
         the_custom_logo();
+      } elseif ( get_theme_mod('wptf_logo') ) {
+        echo '<a href="'.esc_url(home_url('/')).'" class="custom-logo-link"><img src="'.esc_url(get_theme_mod('wptf_logo')).'" alt="'.esc_attr(get_bloginfo('name')).'"></a>';
       } else { ?>
         <a class="site-title" href="<?php echo esc_url( home_url('/') ); ?>"><?php bloginfo('name'); ?></a>
         <p class="site-description"><?php bloginfo('description'); ?></p>

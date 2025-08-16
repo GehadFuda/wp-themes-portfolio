@@ -10,6 +10,17 @@ get_header();
 </header>
 
 <main class="site-content wrap" role="main">
+  <div class="portfolio-filter" aria-hidden="false">
+    <button data-term="all" class="active">الكل</button>
+    <?php
+    $terms = get_terms(array('taxonomy' => 'portfolio_category', 'hide_empty' => true));
+    if ($terms && ! is_wp_error($terms)) {
+      foreach ($terms as $t) {
+        echo '<button data-term="' . esc_attr($t->slug) . '">' . esc_html($t->name) . '</button>';
+      }
+    }
+    ?>
+  </div>
   <section class="portfolio-grid">
     <?php
     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
@@ -21,28 +32,9 @@ get_header();
     $q = new WP_Query($args);
 
     if ($q->have_posts()) :
-      while ($q->have_posts()) : $q->the_post(); ?>
-
-        <!-- <?php
-        // مؤقت: لعرض حالة الثمبنايل
-        echo '<div style="background:#fff4c2;padding:8px;border:1px solid #ffd24d;margin-bottom:10px;">DEBUG: has_post_thumbnail() = ' . (has_post_thumbnail() ? 'true' : 'false') . ' | thumb ID = ' . get_post_thumbnail_id() . '</div>';
-        ?> -->
-
-        <article id="post-<?php the_ID(); ?>" <?php post_class('portfolio-item'); ?>>
-          <a class="portfolio-link" href="<?php the_permalink(); ?>">
-            <div class="thumb">
-              <?php
-              if (has_post_thumbnail()) {
-                the_post_thumbnail('medium', array('loading' => 'lazy', 'alt' => get_the_title()));
-              } else {
-                echo '<div class="no-thumb">No image</div>';
-              }
-              ?>
-            </div>
-            <h2 class="portfolio-title"><?php the_title(); ?></h2>
-          </a>
-        </article>
-    <?php endwhile;
+      while ($q->have_posts()) : $q->the_post();
+        get_template_part('template-parts/card');
+      endwhile;
       wp_reset_postdata();
     else :
       echo '<p class="no-results">لا توجد مشاريع بعد.</p>';
