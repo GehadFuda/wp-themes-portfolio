@@ -1,0 +1,163 @@
+/*
+Theme Name: WPTF Starter
+Theme URI: https://github.com/GehadFuda/wp-themes-portfolio
+Author: Gehad Fuda
+Author URI: https://gehad-fuda.infy.uk
+Description: Starter theme for portfolio projects — minimal, performance-oriented.
+Version: 0.1
+Tags: portfolio, responsive, starter
+Text Domain: wptf-starter
+*/
+
+/* Default CSS variable (fallback) */
+:root {
+  --wptf-primary: #111827; /* default primary color */
+  --wptf-on-primary: #ffffff; /* text color on primary */
+  --wptf-muted: #6b7280;
+}
+
+/* ---------- Basic layout ---------- */
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+  background: var(--wptf-primary);
+  color: var(--wptf-on-primary);
+  padding: 16px 0;
+}
+.site-header .site-title {
+  color: var(--wptf-on-primary);
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+.site-description {
+  margin: 4px 0 0;
+  opacity: 0.9;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.9);
+}
+
+/* Navigation */
+.site-nav .primary-menu {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-nav .primary-menu li a {
+  color: var(--wptf-on-primary);
+  text-decoration: none;
+  padding: 6px 8px;
+  display: inline-block;
+}
+.site-nav .primary-menu li a:hover {
+  opacity: 0.9;
+}
+
+/* Links & buttons using primary color */
+a {
+  color: var(--wptf-primary);
+}
+a:hover { opacity: .85; }
+
+.btn-primary,
+button.primary,
+a.button-primary {
+  background-color: var(--wptf-primary);
+  color: var(--wptf-on-primary);
+  border: 0;
+  padding: 8px 14px;
+  border-radius: 6px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* Archive header */
+.archive-header { text-align: center; padding: 36px 0 8px; }
+.archive-title { font-size: 2rem; margin: 0 0 8px; color: #111; }
+
+/* Portfolio grid */
+.portfolio-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  padding: 28px 0 48px;
+}
+.portfolio-item {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.portfolio-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,0,0,0.06);
+  box-shadow: 0 8px 24px rgba(16,24,40,0.06);
+}
+.portfolio-item .thumb img,
+.portfolio-item .thumb img[src] {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: #f3f4f6;
+}
+.portfolio-title { padding: 12px; font-size: 1.05rem; margin: 0; color: #111; }
+
+/* Single */
+.portfolio-single .entry-title { font-size: 1.6rem; margin-bottom: 10px; }
+.entry-media img { width: 100%; height: auto; display: block; border-radius: 6px; }
+.entry-content { margin-top: 18px; line-height: 1.7; color: #111; }
+.project-meta { background: #f7f7f7; padding: 12px; margin-top: 18px; border-left: 4px solid #e0e0e0; }
+
+/* Filter controls */
+.portfolio-filter {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  align-items: center;
+}
+.portfolio-filter button {
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.portfolio-filter button.active {
+  background: var(--wptf-primary);
+  color: var(--wptf-on-primary);
+  border-color: var(--wptf-primary);
+}
+
+/* Pagination */
+.pagination { text-align: center; margin: 20px 0 40px; }
+
+/* Footer */
+.site-footer { padding: 24px 0; background: #fafafa; border-top: 1px solid #eee; margin-top: 40px; text-align: center; }
+.site-footer a { color: var(--wptf-primary); }
+
+/* Utility */
+.no-thumb {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:200px;
+  color:var(--wptf-muted);
+  background:#f8fafc;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .portfolio-item .thumb img { height: 160px; }
+  .archive-title { font-size: 1.5rem; }
+  .site-nav .primary-menu { flex-wrap: wrap; gap:6px; }
+}
