@@ -2,6 +2,8 @@
 /**
  * Basic index for WPTF Starter
  */
+// echo '<div style="background:#e6ffea;padding:8px;border:2px solid #38a169;margin:8px 0;">DEBUG: archive-wptf_portfolio.php LOADED</div>';
+// exit; // <- لا تفعّل exit الآن إلا للاختبار المؤقت فقط
 get_header();
 ?>
 
